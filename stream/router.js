@@ -1,13 +1,18 @@
 const { Router } = require('express')
 const Chatroom = require('./model')
+//json send events...
+const Sse = require('json-sse')
 
 const router = new Router()
+const stream = new Sse()
 
 router.get('/stream', (req, res) => {
   console.log("req on /stream")
 
   res(200)
   res.send('/stream works')
+  //here we get data that we want to stream from the database
+  Chatroom.findAll()
 
 })
 
