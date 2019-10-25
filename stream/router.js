@@ -12,8 +12,8 @@ router.get('/stream', async (req, res) => {
   // res.status(200) --> remove stream must handle this connection
   // res.send('/stream works') --> remove stream must handle this connection
   //here we get data that we want to stream from the database:
-  const message = await Chatroom.findAll()
-  const data = JSON.stringify(message)
+  const messages = await Chatroom.findAll()
+  const data = JSON.stringify(messages)
   console.log('sse messages from db: ', data)
 
   stream.updateInit(data)  // puts data in stream
@@ -29,12 +29,12 @@ router.post('/message', async (req, res) => {
     message: message
   })
   //stream posted messages too:
-  const message = await Chatroom.findAll()
-  const data = JSON.stringify(message)
+  const messages = await Chatroom.findAll()
+  const data = JSON.stringify(messages)
 
   stream.send(data)
-  // res.status(201)       --> remove stream must handle this connection
-  // res.send('message received')    --> remove stream must handle this connection
+  res.status(201)
+  res.send('message received')
 })
 
 
