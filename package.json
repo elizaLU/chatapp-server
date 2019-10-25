@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/elizaLU/chatapp-server/issues"
   },
-  "homepage": "https://github.com/elizaLU/chatapp-server#readme"
+  "homepage": "https://github.com/elizaLU/chatapp-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }
